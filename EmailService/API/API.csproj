@@ -18,6 +18,7 @@
     <Folder Include="Application\Commands\" />
     <Folder Include="Application\Models\" />
     <Folder Include="Application\Queries\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,11 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
-using API.Application.Commands;
-using API.Application.Queries;
 using Infra.Data;
 using Microsoft.EntityFrameworkCore;
-using INFRA.Data.Repository;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -17,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Adicionar o DbContext
-builder.Services.AddDbContext<>(options =>
+builder.Services.AddDbContext<SqlDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Adicionar o MediatR

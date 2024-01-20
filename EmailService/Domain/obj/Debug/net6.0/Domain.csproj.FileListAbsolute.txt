@@ -1,0 +1,12 @@
+C:\GIT\Pessoal\EmailService\EmailService\Domain\bin\Debug\net6.0\Domain.deps.json
+C:\GIT\Pessoal\EmailService\EmailService\Domain\bin\Debug\net6.0\Domain.dll
+C:\GIT\Pessoal\EmailService\EmailService\Domain\bin\Debug\net6.0\Domain.pdb
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\Domain.sourcelink.json
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\Domain.dll
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\refint\Domain.dll
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\Domain.pdb
+C:\GIT\Pessoal\EmailService\EmailService\Domain\obj\Debug\net6.0\ref\Domain.dll

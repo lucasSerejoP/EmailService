@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
+using model = Domain.AggregatesModel;
+using Microsoft.EntityFrameworkCore;
+using map = Infra.Data.EntityConfigurations;
 
 namespace Infra.Data
 {
@@ -11,6 +10,15 @@ namespace Infra.Data
     {
         public SqlDbContext(DbContextOptions<SqlDbContext> options) : base(options) { }
 
-        public DbSet
+        public DbSet<model.ConfigEmailAggregates.ConfigEmail> ConfigEmails {  get; set; }
+        public DbSet<model.ForwardEmailAggregates.ForwardEmail> ForwardEmails { get; set; }
+        public DbSet<model.TemplateAggregate.Template> Templates { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new map.ConfigEmailAggregatesMap.ConfigEmailMap());
+            modelBuilder.ApplyConfiguration(new map.ForwardEmailAggregatesMap.ForwardEmailMap());
+            modelBuilder.ApplyConfiguration(new map.TemplateAggregatesMap.TemplateMap());
+        }
     }
 }

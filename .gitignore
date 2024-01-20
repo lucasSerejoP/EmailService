@@ -1,0 +1,14 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.vscode
+/EmailService\API\bin
+/EmailService\API\bin\Debug
+/EmailService\Domain\bin
+/EmailService\Domain\bin\Debug
+/EmailService\Infra\bin
+/EmailService\Infra\bin\Debug
+/EmailService\UnitTests\bin
+/EmailService\UnitTests\bin\Debug

@@ -9,14 +9,14 @@ USE EmailService
 IF OBJECT_ID('Template', 'U') IS NULL
 BEGIN
 
-    CREATE TABLE COMMUNICATION_Template
+    CREATE TABLE Template
     (
-        Id BIGINT NOT NULL IDENTITY (1,1),
+        Id BIGINT NOT NULL IDENTITY(1,1),
         Html VARCHAR(MAX) NULL,
-        ChaveCabecalho VARCHAR(200) NULL,
-		ChaveConteudo VARCHAR(200) NOT NULL,
-		ChaveBotoes VARCHAR(200) NULL,
-		ChaveRodape VARCHAR(200) NULL,
+        HeaderField VARCHAR(200) NULL,
+        ContentField VARCHAR(200) NOT NULL,
+        ButtonsField VARCHAR(200) NULL,
+        FooterField VARCHAR(200) NULL,
         PRIMARY KEY (Id)
     );
 
@@ -30,19 +30,20 @@ END;
 IF OBJECT_ID('ConfigEmail', 'U') IS NULL
 BEGIN
 
-    CREATE TABLE EmailConfig
+    CREATE TABLE ConfigEmail
     (
         Id BIGINT NOT NULL IDENTITY (1,1),
-        IdTipoSolicitacaoEmail INT NOT NULL,
-		EmailOrigem VARCHAR(200) NOT NULL,
-		Assunto VARCHAR (50) NOT NULL,
-		MensagemDefault VARCHAR(MAX) NOT NULL,
-		CabecalhoDefault VARCHAR (200) NULL,
-		RodapeDefault VARCHAR (200) NULL,
-		BotoesDefault VARCHAR (200) NULL,
-		IdTemplate BIGINT NOT NULL,
+		SourceEmail VARCHAR(200) NOT NULL,
+		[Subject] VARCHAR (50) NOT NULL,
+		DefaultMessage VARCHAR(MAX) NOT NULL,
+		DefaultHeader VARCHAR (200) NULL,
+		DefaultFooter VARCHAR (200) NULL,
+		DefaultButtons VARCHAR (200) NULL,
+		TemplateId BIGINT NOT NULL,
+        CreatedDate DATETIME NOT NULL,
+        LastModifiedDate DATETIME NULL,
         PRIMARY KEY (Id),
-		CONSTRAINT fk_EmailConfig_Template FOREIGN KEY (IdTemplate) REFERENCES Template (Id)
+		CONSTRAINT fk_EmailConfig_Template FOREIGN KEY (TemplateId) REFERENCES Template (Id)
     );
 
     PRINT 'SCRIPT CREATE TABLE ConfigEmail EXECUTADO COM SUCESSO'
@@ -57,19 +58,18 @@ BEGIN
 
     CREATE TABLE ForwardEmail
     (
-        Id BIGINT NOT NULL IDENTITY (1,1),
-		EmailOrigem VARCHAR(200) NOT NULL,
-		EmailDestino VARCHAR(200) NOT NULL,
-		Assunto VARCHAR (50) NULL,
-		Mensagem VARCHAR(MAX) NOT NULL,
-		IdTemplate BIGINT NOT NULL,
-		IdEmailConfig BIGINT NOT NULL,
-		DataCadastro DATETIME NOT NULL,
-        DataAtualizacao DATETIME NULL,
-		IdStatusFila INT NOT NULL,
+        Id BIGINT NOT NULL IDENTITY(1,1),
+        SourceEmail VARCHAR(200) NOT NULL,
+        DestinationEmail VARCHAR(200) NOT NULL,
+        [Subject] VARCHAR(50) NULL,
+        [Message] VARCHAR(MAX) NOT NULL,
+        TemplateId BIGINT NOT NULL,
+        ConfigEmailId BIGINT NOT NULL,
+        CreatedDate DATETIME NOT NULL,
+        LastModifiedDate DATETIME NULL,
         PRIMARY KEY (Id),
-		CONSTRAINT fk_ForwardEmail_Template FOREIGN KEY (IdTemplate) REFERENCES Template (Id),
-		CONSTRAINT fk_ForwardEmail_EmailConfig FOREIGN KEY (IdEmailConfig) REFERENCES EmailConfig(Id),
+        CONSTRAINT fk_EmailMessage_Template FOREIGN KEY (TemplateId) REFERENCES Template (Id),
+        CONSTRAINT fk_EmailMessage_EmailConfig FOREIGN KEY (ConfigEmailId) REFERENCES ConfigEmail (Id)
     );
 
     PRINT 'SCRIPT CREATE TABLE ForwardEmail EXECUTADO COM SUCESSO'
