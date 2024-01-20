@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
+/EmailService\.vs
 /.vscode
 /EmailService\API\bin
 /EmailService\API\bin\Debug
